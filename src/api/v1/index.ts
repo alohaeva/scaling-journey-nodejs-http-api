@@ -8,13 +8,13 @@ const apiV1Router = Router();
 const startTime = new Date();
 
 apiV1Router.get('/hello', (req, res) => {
-    return sendResponse(res, {
-        result: {
-            startTime: startTime.toISOString()
-        },
-        status: httpStatusCodes.SuccessOK,
-        success: true,
-    });
+  return sendResponse(res, {
+    result: {
+      startTime: startTime.toISOString(),
+    },
+    status: httpStatusCodes.SuccessOK,
+    success: true,
+  });
 });
 
 export default apiV1Router;

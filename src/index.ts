@@ -7,5 +7,5 @@ const port = appConfig.get('server.port');
 const server = new Server();
 
 server.start(port!).then(() => {
-    logger.info(`Server is running at http://localhost:${port}`);
+  logger.info(`Server is running at http://localhost:${port}`);
 });

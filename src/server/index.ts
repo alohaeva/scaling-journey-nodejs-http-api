@@ -1,4 +1,5 @@
 import http, { Server as HttpServer } from 'http';
+
 import cookieParser from 'cookie-parser';
 import express, { Express } from 'express';
 import cors from 'cors';
@@ -43,7 +44,6 @@ export class Server {
 
   catchUncaughtException() {
     process.on('uncaughtException', err => {
-      console.log(err);
       // log the exception
       logger.fatal(err, 'uncaught exception detected');
 
