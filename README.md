@@ -1,6 +1,6 @@
 # NodeJS Project Boilerplate
 
-Supported Templates
+## Supported Templates
 
 ### Basic HTTP Server 
 
@@ -13,3 +13,13 @@ git checkout main
 ```shell
 git checkout boilerplate/microservice-rabbit-mq
 ````
+
+
+## How to start server
+
+### Prerequisites
+
+NodeJS version - `22.4.0`
+
+1. Install dependencies - `npm install`
+2. Run development script to start server - `npm run dev`
