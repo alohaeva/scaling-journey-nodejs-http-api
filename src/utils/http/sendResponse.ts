@@ -1,9 +1,9 @@
-import httpStatusCodes from 'status-code-enum';
+import { StatusCode } from 'status-code-enum';
 import { Response } from 'express';
 
 type ErrorResult = {
   success: false;
-  status: httpStatusCodes;
+  status: StatusCode;
   error: {
     code: number;
     message: string;
@@ -11,8 +11,8 @@ type ErrorResult = {
 };
 
 type SuccessResult<T> = {
-  status: httpStatusCodes;
   success: true;
+  status: StatusCode;
   result?: T;
   cookie?: Record<string, { value: string; expire: number }>;
 };

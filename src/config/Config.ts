@@ -1,4 +1,4 @@
-import { Path, PathValue } from '../types/index.ts';
+import { Path, PathValue } from '../types.ts';
 
 import config from './vars.ts';
 

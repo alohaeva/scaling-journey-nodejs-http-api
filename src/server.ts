@@ -5,41 +5,41 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
-import { logger, loggerInstance } from '../logger/index.ts';
-import { appConfig } from '../config/Config.ts';
-import apiV1Router from '../api/v1/index.ts';
+import { logger, loggerInstance } from './logger/index.ts';
+import { appConfig } from './config/Config.ts';
+import apiV1Router from './api/v1/index.ts';
 
 const domainUrl = appConfig.get('common.domainUrl');
 const cookieSecret = appConfig.get('common.cookieSecret');
+const port = appConfig.get('server.port');
 
 export class Server {
   app: Express;
   server: HttpServer;
 
   constructor() {
-    const app = express();
+    this.app = express();
 
-    app.use(loggerInstance);
-
-    this.catchUncaughtException();
-
-    this.app = app;
-    this.server = http.createServer(app);
-
-    app.use(
+    this.app.use(loggerInstance);
+    this.server = http.createServer(this.app);
+    this.app.use(
       cors({
         origin: domainUrl,
         credentials: true,
       })
     );
-    app.use(bodyParser.json());
-    app.use(cookieParser(cookieSecret));
+    this.app.use(bodyParser.json());
+    this.app.use(cookieParser(cookieSecret));
 
-    app.use('/v1', apiV1Router);
+    this.app.use('/v1', apiV1Router);
   }
 
-  async start(port: number) {
-    this.server.listen(port);
+  start() {
+    this.catchUncaughtException();
+
+    this.server.listen(port, () => {
+      logger.info(`Server is running at http://localhost:${port}`);
+    });
   }
 
   catchUncaughtException() {

@@ -1,18 +1,17 @@
 import { Router } from 'express';
-import httpStatusCodes from 'status-code-enum';
+import { StatusCode } from 'status-code-enum';
 
+import { helloRoute } from '../../routes/v1/index.ts';
 import { sendResponse } from '../../utils/http/index.ts';
 
 const apiV1Router = Router();
 
-const startTime = new Date();
+apiV1Router.get(helloRoute.path, (req, res) => {
+  const result = helloRoute.handler(req.url);
 
-apiV1Router.get('/hello', (req, res) => {
   return sendResponse(res, {
-    result: {
-      startTime: startTime.toISOString(),
-    },
-    status: httpStatusCodes.SuccessOK,
+    result,
+    status: StatusCode.SuccessOK,
     success: true,
   });
 });

@@ -1,0 +1,10 @@
+import { HelloService } from '../../services/HelloService.ts';
+
+export const helloRoute = {
+  path: '/hello',
+  handler: (message: string) => {
+    const helloService = new HelloService();
+
+    return helloService.handler(message);
+  },
+};
