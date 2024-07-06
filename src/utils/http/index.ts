@@ -1,1 +1,1 @@
-export * from './sendResponse';
+export * from './sendResponse.ts';

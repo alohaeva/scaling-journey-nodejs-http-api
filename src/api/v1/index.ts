@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import httpStatusCodes from 'status-code-enum';
 
-import { sendResponse } from '../../utils/http';
+import { sendResponse } from '../../utils/http/index.ts';
 
 const apiV1Router = Router();
 

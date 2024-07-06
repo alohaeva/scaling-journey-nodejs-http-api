@@ -1,6 +1,6 @@
-import { Path, PathValue } from '../types';
+import { Path, PathValue } from '../types/index.ts';
 
-import config from './vars';
+import config from './vars.ts';
 
 class AppConfig {
   get<T = typeof config, P extends Path<T> = any, R = PathValue<T, P>>(key: P): R | undefined {
@@ -10,7 +10,7 @@ class AppConfig {
     return keys.reduce((acc, b) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      return acc[b];
+      return acc ? acc[b] : undefined;
     }, config);
   }
 }

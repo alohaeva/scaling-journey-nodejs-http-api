@@ -1,5 +1,5 @@
-import { toNormalizedError } from '../normalError';
-import { logger } from '../../logger';
+import { toNormalizedError } from '../normalError.ts';
+import { logger } from '../../logger/index.ts';
 
 const base64urlUnescape = (str: string) => {
   str += Array(5 - (str.length % 4)).join('=');

@@ -1,6 +1,6 @@
-import { Server } from './server';
-import { appConfig } from './config/Config';
-import { logger } from './logger';
+import { Server } from './server/index.ts';
+import { appConfig } from './config/Config.ts';
+import { logger } from './logger/index.ts';
 
 const port = appConfig.get('server.port');
 

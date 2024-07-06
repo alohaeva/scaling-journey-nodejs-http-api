@@ -5,9 +5,9 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
-import { logger, loggerInstance } from '../logger';
-import { appConfig } from '../config/Config';
-import apiV1Router from '../api/v1';
+import { logger, loggerInstance } from '../logger/index.ts';
+import { appConfig } from '../config/Config.ts';
+import apiV1Router from '../api/v1/index.ts';
 
 const domainUrl = appConfig.get('common.domainUrl');
 const cookieSecret = appConfig.get('common.cookieSecret');

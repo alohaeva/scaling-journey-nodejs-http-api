@@ -1,5 +1,5 @@
-import { parseNumber } from '../utils/parse/parseNumber';
-import { parseString } from '../utils/parse/parseString';
+import { parseNumber } from '../utils/parse/parseNumber.ts';
+import { parseString } from '../utils/parse/parseString.ts';
 
 export const PORT = parseNumber(process.env.PORT, 8000);
 export const DOMAIN_URL = parseString(process.env.DOMAIN_URL, 'http://localhost:3000');
