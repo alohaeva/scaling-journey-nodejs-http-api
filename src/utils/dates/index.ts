@@ -35,5 +35,7 @@ const multiplicationsMap = {
 
 export const getTimeStamp = ({ type, value }: AddTimeParams): number => multiplicationsMap[type] * value;
 
-export const addTime = (ts: Date | number, duration: Duration): Date => dateFns.add(ts, duration);
+export const addTime = (ts: Date | number, duration: Duration): Date => {
+  return dateFns.add(ts, duration);
+};
 export const isDateBefore = (date: number | Date, target: number | Date) => dateFns.isBefore(date, target);
