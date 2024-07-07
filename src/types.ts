@@ -1,3 +1,21 @@
+import { StatusCode } from 'status-code-enum';
+
+export type ErrorResult = {
+  success: false;
+  status: StatusCode;
+  error: {
+    code: number;
+    message: string;
+  };
+};
+
+export type SuccessResult<T> = {
+  success: true;
+  status: StatusCode;
+  result?: T;
+  cookie?: Record<string, { value: string; expire: number }>;
+};
+
 type IsAny<T> = unknown extends T ? ([keyof T] extends [never] ? false : true) : false;
 
 export type PathImpl<T, Key extends keyof T> = Key extends string

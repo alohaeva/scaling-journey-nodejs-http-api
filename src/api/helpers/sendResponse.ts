@@ -1,21 +1,5 @@
-import { StatusCode } from 'status-code-enum';
 import { Response } from 'express';
-
-type ErrorResult = {
-  success: false;
-  status: StatusCode;
-  error: {
-    code: number;
-    message: string;
-  };
-};
-
-type SuccessResult<T> = {
-  success: true;
-  status: StatusCode;
-  result?: T;
-  cookie?: Record<string, { value: string; expire: number }>;
-};
+import { ErrorResult, SuccessResult } from '../../types.ts';
 
 export const sendResponse = <T>(res: Response, responseParams: SuccessResult<T> | ErrorResult) => {
   if (responseParams.success) {

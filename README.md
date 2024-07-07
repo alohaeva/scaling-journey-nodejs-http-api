@@ -2,7 +2,7 @@
 
 ## Supported Templates
 
-### Basic HTTP Server 
+### Basic HTTP Server
 
 ```shell
 git checkout main
@@ -14,12 +14,31 @@ git checkout main
 git checkout boilerplate/microservice-rabbit-mq
 ````
 
-
 ## How to start server
 
-### Prerequisites
+**Prerequisites**
 
-NodeJS version - `22.4.0`
+- NodeJS version - `22.4.0`
+
+---
 
 1. Install dependencies - `npm install`
 2. Run development script to start server - `npm run dev`
+
+
+## Project's Architecture Considerations
+
+`index.ts` - file that exports `Server` class and initiate the server
+
+`server.ts` - file that builds the Server class and all the dependencies. 
+
+If there is a need to change framework, for example use Fastify instead of Express. Server class should be changed accordingly
+
+`api/*` - NodeJS Framework specific implementation of API (For Express now). This folder imports all the data in `routes` folder
+
+`routes/*` - Implementation of routes for api, should not depend on NodeJS Framework
+
+`services/*` - Implementation of business logic
+
+
+
