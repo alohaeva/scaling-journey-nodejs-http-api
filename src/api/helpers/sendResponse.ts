@@ -1,4 +1,5 @@
 import { Response } from 'express';
+
 import { ErrorResult, SuccessResult } from '../../types.ts';
 
 export const sendResponse = <T>(res: Response, responseParams: SuccessResult<T> | ErrorResult) => {
