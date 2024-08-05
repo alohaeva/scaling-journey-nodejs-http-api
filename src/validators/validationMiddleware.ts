@@ -25,7 +25,7 @@ export const validationMiddleware =
         sendResponse(res, {
           error: {
             message: validationErrors.toString(),
-            code: StatusCode.ClientErrorBadRequest
+            code: StatusCode.ClientErrorBadRequest,
           },
           status: StatusCode.ClientErrorBadRequest,
           success: false,
