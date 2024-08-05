@@ -3,14 +3,14 @@
 ## Implemented based on Best API Development Patterns
 
 1. **Logging** - pino logger to add formatting, configuring transport, etc
-2. **Data Validation**
+2. **Input Validation**
 3. **Authentication**
 4. **Authorization**
 5. **Data Access Patterns** - DTOs, Repositories
 6. **Unit Tests**
 7. **API Versioning**
 8. **Domain Model** - Maintaining the code based on the Domain Model (`/services`)
-9. tbd
+9. **Rate Limit**
 
 ## Supported Templates
 
