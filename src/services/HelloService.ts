@@ -1,9 +1,11 @@
+import { PostHelloMessage } from '../dtos/hello.ts';
+
 const startTime = new Date();
 
 export class HelloService {
   constructor() {}
 
-  handler(message: string) {
-    return `Hello World! from ${message}, ${startTime.toISOString()}`;
+  handler(message: PostHelloMessage) {
+    return `Hello World! from ${message.name}, ${startTime.toISOString()}`;
   }
 }
