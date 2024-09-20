@@ -13,6 +13,7 @@ import apiV1Router from './api/v1/index.ts';
 const domainUrl = appConfig.get('common.domainUrl');
 const cookieSecret = appConfig.get('common.cookieSecret');
 const port = appConfig.get('server.port');
+const mongodb = appConfig.get('connections.mongo');
 
 export class Server {
   app: Express;
@@ -38,11 +39,13 @@ export class Server {
   async start() {
     this.catchUncaughtException();
 
-    await MongoDBConnection.connect({
-      uri: 'mongodb://localhost:27017/scaling',
-    });
+    if (mongodb?.uri) {
+      await MongoDBConnection.connect({
+        uri: mongodb.uri,
+      });
+    }
 
-    this.server.listen(port, '0.0.0.0', () => {
+    this.server.listen(port, () => {
       logger.info(`Server is running at http://localhost:${port}`);
     });
   }
