@@ -1,20 +1,11 @@
-import { Router, Request, Response } from 'express';
-import { StatusCode } from 'status-code-enum';
+import { Router } from 'express';
 
-import { helloRoute } from '../../routes/v1/index.ts';
-import { sendResponse } from '../helpers/sendResponse.ts';
-import { validationMiddleware } from '../../validators/validationMiddleware.ts';
+import { itemsRouter } from './items/index.ts';
+import { helloRouter } from './hello/index.ts';
 
 const apiV1Router = Router();
 
-apiV1Router.post(helloRoute.path, validationMiddleware(helloRoute.payloadValidator), (_: Request, res: Response) => {
-  const result = helloRoute.handler(res.locals.payload);
-
-  return sendResponse(res, {
-    result,
-    status: StatusCode.SuccessOK,
-    success: true,
-  });
-});
+apiV1Router.use('/items', itemsRouter);
+apiV1Router.use('/hello', helloRouter);
 
 export default apiV1Router;

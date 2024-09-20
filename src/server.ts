@@ -5,6 +5,7 @@ import express, { Express } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
+import MongoDBConnection from './connectors/mongo/index.ts';
 import { logger, loggerInstance } from './logger/index.ts';
 import { appConfig } from './config/Config.ts';
 import apiV1Router from './api/v1/index.ts';
@@ -34,10 +35,14 @@ export class Server {
     this.app.use('/v1', apiV1Router);
   }
 
-  start() {
+  async start() {
     this.catchUncaughtException();
 
-    this.server.listen(port, () => {
+    await MongoDBConnection.connect({
+      uri: 'mongodb://localhost:27017/scaling',
+    });
+
+    this.server.listen(port, '0.0.0.0', () => {
       logger.info(`Server is running at http://localhost:${port}`);
     });
   }

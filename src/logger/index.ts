@@ -10,7 +10,7 @@ export const loggerInstance = pinoHttp({
         colorize: true,
       },
     },
-    msgPrefix: '[NodeJS - Express - Boilerplate] ',
+    msgPrefix: '[HTTP API] ',
   }),
   quietReqLogger: true,
   customReceivedMessage(req) {
