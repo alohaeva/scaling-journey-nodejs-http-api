@@ -12,11 +12,11 @@ services:
     labels:
       - "traefik.docker.network=traefik_proxy"
       - "traefik.enable=true"
-      - "traefik.http.routers.server-main.rule=Host(`api.alohaeva.com`)"
-      - "traefik.http.routers.server-main.entrypoints=websecure"
-      - "traefik.http.routers.server-main.tls=true"
-      - "traefik.http.routers.server-main.tls.certresolver=myresolver"
-      - "traefik.http.services.server-main.loadbalancer.server.port=8000"
+      - "traefik.http.routers.scaling-app.rule=Host(`api.alohaeva.com`)"
+      - "traefik.http.routers.scaling-app.entrypoints=websecure"
+      - "traefik.http.routers.scaling-app.tls=true"
+      - "traefik.http.routers.scaling-app.tls.certresolver=myresolver"
+      - "traefik.http.services.scaling-app.loadbalancer.server.port=8000"
 
   mongo:
     container_name: mongo
