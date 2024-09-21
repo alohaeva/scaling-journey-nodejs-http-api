@@ -1,4 +1,15 @@
 services:
+  scaling-app:
+    container_name: scaling-app
+    restart: unless-stopped
+    build:
+      dockerfile: ../infra/Dockerfile
+      context: ../app
+    ports:
+      - "8000:8000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
   mongo:
     container_name: mongo
     image: mongo:latest

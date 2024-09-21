@@ -15,7 +15,7 @@ export default {
   },
   connections: {
     mongo: {
-      uri: 'mongodb://localhost:27017/scaling',
+      uri: 'mongodb://mongo:27017/scaling',
     },
   },
 };
