@@ -1,0 +1,34 @@
+services:
+  scaling-app:
+    container_name: scaling-app
+    restart: unless-stopped
+    build:
+      dockerfile: ../infra/Dockerfile
+      context: ../app
+    ports:
+      - "8000:8000"
+    networks:
+      - main_movis
+    labels:
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.enable=true"
+      - "traefik.http.routers.server-main.rule=Host(`api.alohaeva.com`)"
+      - "traefik.http.routers.server-main.entrypoints=websecure"
+      - "traefik.http.routers.server-main.tls=true"
+      - "traefik.http.routers.server-main.tls.certresolver=myresolver"
+      - "traefik.http.services.server-main.loadbalancer.server.port=8000"
+
+  mongo:
+    container_name: mongo
+    image: mongo:latest
+    restart: unless-stopped
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+
+networks:
+  traefik_proxy:
+    external: true
+  main_movis:
+    driver: bridge
