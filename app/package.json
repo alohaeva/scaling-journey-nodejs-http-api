@@ -9,7 +9,7 @@
   "license": "ISC",
   "scripts": {
     "build:watch": "tsc -w",
-    "build": "swc src --out-dir dist",
+    "build": "rm -rf ./dist && NODE_ENV=production && swc src --out-dir dist",
     "dev": "nodemon --config nodemon.json",
     "start": "node --no-warnings=ExperimentalWarning --loader ts-node/esm ./index.js",
     "lint": "eslint . --ext .ts --fix -c ./.eslintrc.json",
