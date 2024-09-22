@@ -9,6 +9,7 @@ services:
       - "8000:8000"
     networks:
       - main_scaling
+      - traefik_proxy
     labels:
       - "traefik.docker.network=traefik_proxy"
       - "traefik.enable=true"
